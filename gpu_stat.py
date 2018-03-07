@@ -39,8 +39,8 @@ while True:
     d = OrderedDict()
     d["time"] = time.time()
 
-    cmd = ['nvidia-smi', '-q', '-x']
-    cmd_out = subprocess.check_output(cmd)
+    cmd = ['gpustat', '--json']
+    cmd_out = json.loads(subprocess.check_output(cmd))
     pdb.set_trace()
     gpu = xml.etree.ElementTree.fromstring(cmd_out).find("gpu")
 

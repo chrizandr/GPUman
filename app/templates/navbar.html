@@ -1,0 +1,59 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
+        class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="/">GPUman</a>
+      <div class="nav-collapse">
+        <ul class="nav pull-right">
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                            class="icon-user"></i> {{username}} <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="/account">Settings</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+     </div>
+      <!--/.nav-collapse -->
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /navbar-inner -->
+</div>
+<!-- /navbar -->
+<div class="subnavbar">
+  <div class="subnavbar-inner">
+    <div class="container">
+      <ul class="mainnav">
+        {% if index %}
+            <li class="active"><a href="/"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
+        {% else %}
+            <li><a href="/"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
+        {% endif %}
+
+        {% if stats %}
+            <li class="active"><a href="/stats"><i class="icon-bar-chart"></i><span>Server Stats</span> </a> </li>
+        {% else %}
+            <li><a href="/stats"><i class="icon-bar-chart"></i><span>Server Stats</span> </a> </li>
+        {% endif %}
+
+        {% if guide %}
+            <li class="active"><a href="/guide"><i class="icon-list-alt"></i><span>Guidelines</span> </a></li>
+        {% else %}
+            <li><a href="/guide"><i class="icon-list-alt"></i><span>Guidelines</span> </a></li>
+        {% endif %}
+
+        {% if req %}
+            <li class="active"><a href="/req"><i class="icon-code"></i><span>New Request</span> </a> </li>
+        {% else %}
+            <li><a href="/req"><i class="icon-code"></i><span>New Request</span> </a> </li>
+        {% endif %}
+
+        {% if account %}
+            <li class="active"><a href="/account"><i class="icon-user"></i><span>Account</span> </a> </li>
+        {% else %}
+            <li><a href="/account"><i class="icon-user"></i><span>Account</span> </a> </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>

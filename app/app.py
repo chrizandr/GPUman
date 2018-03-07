@@ -7,6 +7,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine, exists
 from sqlalchemy.orm.exc import NoResultFound
 from settings import DB_URL, Key
+import json
 # from gevent.wsgi import WSGIServer
 
 app = Flask(__name__)
@@ -16,6 +17,25 @@ Session = sessionmaker(bind=engine)
 db_session = Session()
 
 
+def get_new_requests():
+    """Get new requests."""
+    results = []
+    requests = db_session.query(UsageRequest).filter(UsageRequest.status == "new").all()
+    users = [db_session.query(User).filter(User.id_ == r.user_id).one() for r in requests]
+    for i, r in enumerate(requests):
+        results.append({"username": users[i].username,
+                        "time": str(r.usage_time)+'H',
+                        "timestamp": str(r.timestamp)})
+    return results
+
+
+def get_last_seven_days():
+    """Get usage logs for last seven days."""
+    logs = json.load(open("seven_log", "r"))
+    days = [day for day in logs]
+    usage = [[logs[day][gpu] for gpu in logs[day]] for day in logs]
+    return days, usage
+
 @app.route('/')
 def index():
     """Login/Dashboard."""
@@ -23,7 +43,8 @@ def index():
         # Add admin Dashboard
         pass
     elif 'user' in session:
-        # Add user Dashboard
+        content = {"index": True, "username": "Chris", "request": [{"user": "Ambuj", "time": "48H", "timestamp": "assas"}]}
+        return render_template("index.html", **content)
         pass
     flash("Please login to continue")
     return redirect(url_for("login"))

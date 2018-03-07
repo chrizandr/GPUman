@@ -92,7 +92,7 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
+    pdb.set_trace()
     test_user = User("test", "test", "test", "test@gmail.com", "test")
     session.add(test_user)
     session.commit()
-    pdb.set_trace()
