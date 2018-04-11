@@ -57,28 +57,6 @@ def index():
                          "to_year": 2018,
                          "timestamp": "2018/3/1"
                          },
-                         {
-                          "user": "Chris",
-                          "time": "48H",
-                          "from_day": 28,
-                          "from_month": 3,
-                          "from_year": 2018,
-                          "to_day": 30,
-                          "to_month": 3,
-                          "to_year": 2018,
-                          "timestamp": "2018/3/1"
-                          },
-                          {
-                           "user": "Santhu",
-                           "time": "48H",
-                           "from_day": 28,
-                           "from_month": 3,
-                           "from_year": 2018,
-                           "to_day": 30,
-                           "to_month": 3,
-                           "to_year": 2018,
-                           "timestamp": "2018/3/1"
-                           }
                     ]
                    }
         return render_template("index.html", **content)
