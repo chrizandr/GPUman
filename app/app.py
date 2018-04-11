@@ -36,6 +36,7 @@ def get_last_seven_days():
     usage = [[logs[day][gpu] for gpu in logs[day]] for day in logs]
     return days, usage
 
+
 @app.route('/')
 def index():
     """Login/Dashboard."""
@@ -43,7 +44,43 @@ def index():
         # Add admin Dashboard
         pass
     elif 'user' in session:
-        content = {"index": True, "username": "Chris", "request": [{"user": "Ambuj", "time": "48H", "timestamp": "assas"}]}
+        content = {"index": True, "username": "Chris",
+                   "request": [
+                        {
+                         "user": "Ambuj",
+                         "time": "48H",
+                         "from_day": 28,
+                         "from_month": 3,
+                         "from_year": 2018,
+                         "to_day": 30,
+                         "to_month": 3,
+                         "to_year": 2018,
+                         "timestamp": "2018/3/1"
+                         },
+                         {
+                          "user": "Chris",
+                          "time": "48H",
+                          "from_day": 28,
+                          "from_month": 3,
+                          "from_year": 2018,
+                          "to_day": 30,
+                          "to_month": 3,
+                          "to_year": 2018,
+                          "timestamp": "2018/3/1"
+                          },
+                          {
+                           "user": "Santhu",
+                           "time": "48H",
+                           "from_day": 28,
+                           "from_month": 3,
+                           "from_year": 2018,
+                           "to_day": 30,
+                           "to_month": 3,
+                           "to_year": 2018,
+                           "timestamp": "2018/3/1"
+                           }
+                    ]
+                   }
         return render_template("index.html", **content)
         pass
     flash("Please login to continue")

@@ -62,7 +62,7 @@
 
           <div class="widget widget-table action-table">
             <div class="widget-header"> <i class="icon-th-list"></i>
-              <h3>A Table Example</h3>
+              <h3>GPU Request Queue</h3>
             </div>
             <div class="widget-content">
               <table class="table table-striped table-bordered">
@@ -166,26 +166,13 @@
           },
           editable: true,
           events: [
-              {
-                  title: 'Test Event',
-                  start: new Date(2018, 2, 5),
-                  end: new Date(2018, 2, 7)
-              },
-              {
-                  title: 'Test Event',
-                  start: new Date(2018, 2, 6),
-                  end: new Date(2018, 2, 7)
-              },
-              {
-                  title: 'Test Event',
-                  start: new Date(2018, 2, 5),
-                  end: new Date(2018, 2, 7)
-              },
-              {
-                  title: 'Test Event',
-                  start: new Date(2018, 2, 5),
-                  end: new Date(2018, 2, 7)
-              }
+                {% for req in request %}
+                    {
+                        title: "{{req.user | safe}}",
+                        start: new Date({{req.from_year | safe }}, {{req.from_month | safe }}, {{req.from_day | safe }}),
+                        end: new Date({{req.to_year | safe }}, {{req.to_month | safe }}, {{req.to_day | safe }}),
+                    },
+                {% endfor %}
           ]
         });
       });

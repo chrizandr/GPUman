@@ -27,6 +27,7 @@ except:
 
 
 def extract(elem, tag, drop_s):
+    """Extract features from the text."""
     text = elem.find(tag).text
     pdb.set_trace()
     if drop_s not in text:
